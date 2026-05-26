@@ -16,7 +16,7 @@ export default function LoginPage({ onLoginSuccess }) {
     try {
       // ⚠️ GANTI TEKS DI BAWAH INI DENGAN URL BACKEND VERCEL-MU YANG SEBENARNYA
       // Contoh: "https://migo-backend-api.vercel.app/api/login"
-      const response = await fetch("https://bastp-backend-api.vercel.app", {
+      const response = await fetch("https://bastp-backend-api.vercel.app/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
