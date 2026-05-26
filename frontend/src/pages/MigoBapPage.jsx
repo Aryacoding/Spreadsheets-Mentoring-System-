@@ -71,7 +71,7 @@ export default function MigoBapPage() {
 
     setIsSearching(true); // Aktifkan Loading
     try {
-      const response = await fetch(`http://localhost:5000/api/bap/cari/${searchNoAR}`);
+      const response = await fetch(`http://localhost:8080/api/bap/cari/${searchNoAR}`);
       const resData = await response.json();
 
       if (resData.success) {
