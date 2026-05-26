@@ -58,8 +58,7 @@ export default function App() {
 
               {/* USER BRANDING BOX */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginRight: '10px', borderLeft: '1px solid #e5e7eb', paddingLeft: '16px' }}>
-                <div style={{ width: '32px', height: '32px', borderRadius: '50%', backgroundColor: '#4f46e5', color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center', fontWeight: 'bold', fontSize: '14px' }}>
-                  {user.username ? user.username.charAt(0).toUpperCase() : 'A'}
+                <div>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2' }}>
                   <span style={{ fontSize: '13px', fontWeight: '600', color: '#374151' }}>{user.username}</span>
