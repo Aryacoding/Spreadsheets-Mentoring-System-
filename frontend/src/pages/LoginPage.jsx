@@ -14,7 +14,9 @@ export default function LoginPage({ onLoginSuccess }) {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/login", {
+      // ⚠️ GANTI TEKS DI BAWAH INI DENGAN URL BACKEND VERCEL-MU YANG SEBENARNYA
+      // Contoh: "https://migo-backend-api.vercel.app/api/login"
+      const response = await fetch("https://bastp-backend-api.vercel.app/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
@@ -23,13 +25,13 @@ export default function LoginPage({ onLoginSuccess }) {
       const data = await response.json();
 
       if (data.success) {
-        onLoginSuccess(data.user); // Lemparkan data {id, username} ke App.jsx
+        onLoginSuccess(data.user); // Lemparkan data {username} ke App.jsx
       } else {
         setError(data.message || "Username atau password salah.");
       }
     } catch (err) {
       setError(
-        "Tidak dapat terhubung ke server backend. Pastikan server Laragon/Node.js aktif."
+        "Tidak dapat terhubung ke server awan. Pastikan koneksi internet Anda stabil."
       );
     } finally {
       setIsLoading(false);
@@ -56,18 +58,16 @@ export default function LoginPage({ onLoginSuccess }) {
       {/* Container Glassmorphism */}
       <div
         style={{
-          // Ubah background menjadi putih transparan
           backgroundColor: "rgba(255, 255, 255, 0.45)",
-          // Efek blur ala Apple
           backdropFilter: "blur(20px) saturate(150%)",
-          WebkitBackdropFilter: "blur(20px) saturate(150%)", // Dukungan untuk Safari
+          WebkitBackdropFilter: "blur(20px) saturate(150%)",
           padding: "40px",
-          borderRadius: "20px", // Sudut lebih membulat khas Apple
-          boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.15)", // Bayangan lebih lembut dan lebar
+          borderRadius: "20px",
+          boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.15)",
           width: "100%",
           maxWidth: "380px",
           textAlign: "center",
-          border: "1px solid rgba(255, 255, 255, 0.6)", // Border putih transparan
+          border: "1px solid rgba(255, 255, 255, 0.6)",
         }}
       >
         <div style={{ marginBottom: "20px" }}>
@@ -95,7 +95,7 @@ export default function LoginPage({ onLoginSuccess }) {
         {error && (
           <div
             style={{
-              backgroundColor: "rgba(254, 226, 226, 0.8)", // Transparan merah
+              backgroundColor: "rgba(254, 226, 226, 0.8)",
               color: "#dc2626",
               padding: "10px",
               borderRadius: "10px",
@@ -140,8 +140,8 @@ export default function LoginPage({ onLoginSuccess }) {
               style={{
                 width: "100%",
                 padding: "10px",
-                borderRadius: "12px", // Sudut membulat
-                backgroundColor: "rgba(255, 255, 255, 0.6)", // Input agak transparan
+                borderRadius: "12px",
+                backgroundColor: "rgba(255, 255, 255, 0.6)",
                 border: "1px solid rgba(255, 255, 255, 0.8)",
                 fontSize: "14px",
                 boxSizing: "border-box",
@@ -191,7 +191,7 @@ export default function LoginPage({ onLoginSuccess }) {
             disabled={isLoading}
             style={{
               width: "100%",
-              backgroundColor: "#007AFF", // Warna biru khas Apple
+              backgroundColor: "#007AFF",
               color: "#ffffff",
               border: "none",
               padding: "12px",
@@ -202,7 +202,7 @@ export default function LoginPage({ onLoginSuccess }) {
               marginTop: "10px",
               transition: "background 0.2s, opacity 0.2s",
               opacity: isLoading ? 0.7 : 1,
-              boxShadow: "0 4px 14px 0 rgba(0, 122, 255, 0.3)", // Glow biru
+              boxShadow: "0 4px 14px 0 rgba(0, 122, 255, 0.3)",
             }}
           >
             {isLoading ? "Memverifikasi..." : "Masuk ke Aplikasi"}
@@ -214,11 +214,11 @@ export default function LoginPage({ onLoginSuccess }) {
             marginTop: "30px",
             fontSize: "11px",
             color: "#6b7280",
-            borderTop: "1px solid rgba(255, 255, 255, 0.5)", // Garis batas transparan
+            borderTop: "1px solid rgba(255, 255, 255, 0.5)",
             paddingTop: "15px",
           }}
         >
-          BASTP Database Auth &bull; 2026
+          BASTP Admin Auth &bull; 2026
         </div>
       </div>
     </div>
