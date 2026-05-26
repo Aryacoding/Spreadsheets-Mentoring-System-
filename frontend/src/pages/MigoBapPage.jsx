@@ -220,7 +220,7 @@ export default function MigoBapPage() {
 
       {/* 📝 FORM UTAMA INPUT DATA BERITA ACARA */}
       <form onSubmit={handleSubmitKeSheet} style={{ backgroundColor: '#ffffff', padding: '25px', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
-        <h2 style={{ margin: '0 0 20px 0', color: '#2c3e50', borderBottom: '2px solid #3498db', paddingBottom: '10px' }}>📝 Form Pembuatan Berita Acara Baru</h2>
+        <h2 style={{ margin: '0 0 20px 0', color: '#2c3e50', borderBottom: '2px solid #3498db', paddingBottom: '10px' }}>📝 Form Berita Acara Serah Terima Perangkat</h2>
         
         {/* BARIS 1 */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '15px' }}>
