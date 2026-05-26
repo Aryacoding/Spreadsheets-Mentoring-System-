@@ -10,10 +10,7 @@ import { FiFileText, FiUsers, FiSettings, FiLogOut } from 'react-icons/fi';
 import logoIconnet from './assets/logo-iconnet.png';
 
 export default function App() {
-  const [user, setUser] = useState(() => {
-    const savedUser = localStorage.getItem('migoUserSession');
-    return savedUser ? JSON.parse(savedUser) : null;
-  });
+const [user, setUser] = useState({ username: "admin" });
 
   const handleLoginSuccess = (userData) => {
     localStorage.setItem('migoUserSession', JSON.stringify(userData));
