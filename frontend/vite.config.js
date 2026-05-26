@@ -9,3 +9,11 @@ export default defineConfig({
     babel({ presets: [reactCompilerPreset()] })
   ],
 })
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
