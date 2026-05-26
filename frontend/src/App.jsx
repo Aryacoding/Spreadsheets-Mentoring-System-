@@ -10,7 +10,10 @@ import { FiFileText, FiUsers, FiSettings, FiLogOut } from 'react-icons/fi';
 import logoIconnet from './assets/logo-iconnet.png';
 
 export default function App() {
-const [user, setUser] = useState({ username: "admin" });
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem('migoUserSession');
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
 
   const handleLoginSuccess = (userData) => {
     localStorage.setItem('migoUserSession', JSON.stringify(userData));
@@ -56,8 +59,6 @@ const [user, setUser] = useState({ username: "admin" });
               {/* USER BRANDING BOX */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginRight: '10px', borderLeft: '1px solid #e5e7eb', paddingLeft: '16px' }}>
                 <div>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2' }}>
                   <span style={{ fontSize: '13px', fontWeight: '600', color: '#374151' }}>{user.username}</span>
                   <span style={{ fontSize: '11px', color: '#9ca3af' }}>Administrator</span>
                 </div>

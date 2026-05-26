@@ -1,224 +1,91 @@
-import React, { useState } from "react";
-import logoIconnet from "../assets/logo-iconnet.png";
-import backgroundImage from "../assets/kantor.jpg";
+import React, { useState } from 'react';
+import logoIconnet from '../assets/logo-iconnet.png';
 
 export default function LoginPage({ onLoginSuccess }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFormLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setError("");
+    setError('');
 
     try {
-      // ⚠️ GANTI TEKS DI BAWAH INI DENGAN URL BACKEND VERCEL-MU YANG SEBENARNYA
-      // Contoh: "https://migo-backend-api.vercel.app/api/login"
-      const response = await fetch("https://bastp-backend-api.vercel.app/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
+      const response = await fetch('http://localhost:5000/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
       });
 
       const data = await response.json();
 
       if (data.success) {
-        onLoginSuccess(data.user); // Lemparkan data {username} ke App.jsx
+        onLoginSuccess(data.user); // Lemparkan data {id, username} ke App.jsx
       } else {
-        setError(data.message || "Username atau password salah.");
+        setError(data.message || 'Username atau password salah.');
       }
     } catch (err) {
-      setError(
-        "Tidak dapat terhubung ke server awan. Pastikan koneksi internet Anda stabil."
-      );
+      setError('Tidak dapat terhubung ke server backend. Pastikan server Laragon/Node.js aktif.');
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        fontFamily: "Arial, sans-serif",
-      }}
-    >
-      {/* Container Glassmorphism */}
-      <div
-        style={{
-          backgroundColor: "rgba(255, 255, 255, 0.45)",
-          backdropFilter: "blur(20px) saturate(150%)",
-          WebkitBackdropFilter: "blur(20px) saturate(150%)",
-          padding: "40px",
-          borderRadius: "20px",
-          boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.15)",
-          width: "100%",
-          maxWidth: "380px",
-          textAlign: "center",
-          border: "1px solid rgba(255, 255, 255, 0.6)",
-        }}
-      >
-        <div style={{ marginBottom: "20px" }}>
-          <img
-            src={logoIconnet}
-            alt="Logo ICONNET"
-            style={{ height: "45px", objectFit: "contain" }}
-          />
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#f3f4f6', fontFamily: 'Arial, sans-serif' }}>
+      <div style={{ backgroundColor: '#ffffff', padding: '40px', borderRadius: '12px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)', width: '100%', maxWidth: '380px', textAlign: 'center', border: '1px solid #e5e7eb' }}>
+        
+        <div style={{ marginBottom: '20px' }}>
+          <img src={logoIconnet} alt="Logo ICONNET" style={{ height: '45px', objectFit: 'contain' }} />
         </div>
 
-        <h3
-          style={{
-            color: "#1f2937",
-            margin: "0 0 6px 0",
-            fontSize: "20px",
-            fontWeight: "700",
-          }}
-        >
-          Portal BASTP
-        </h3>
-        <p style={{ color: "#4b5563", fontSize: "13px", margin: "0 0 24px 0" }}>
-          Silakan masuk menggunakan akun administrator Anda.
-        </p>
+        <h3 style={{ color: '#1f2937', margin: '0 0 6px 0', fontSize: '20px', fontWeight: '700' }}>Migo Portal BAP</h3>
+        <p style={{ color: '#6b7280', fontSize: '13px', margin: '0 0 24px 0' }}>Silakan masuk menggunakan akun administrator Anda.</p>
 
         {error && (
-          <div
-            style={{
-              backgroundColor: "rgba(254, 226, 226, 0.8)",
-              color: "#dc2626",
-              padding: "10px",
-              borderRadius: "10px",
-              fontSize: "13px",
-              marginBottom: "16px",
-              fontWeight: "600",
-              textAlign: "left",
-              border: "1px solid rgba(252, 165, 165, 0.5)",
-              backdropFilter: "blur(10px)",
-            }}
-          >
+          <div style={{ backgroundColor: '#fee2e2', color: '#dc2626', padding: '10px', borderRadius: '6px', fontSize: '13px', marginBottom: '16px', fontWeight: '600', textAlign: 'left', border: '1px solid #fca5a5' }}>
             ⚠️ {error}
           </div>
         )}
 
-        <form
-          onSubmit={handleFormLogin}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "14px",
-            textAlign: "left",
-          }}
-        >
+        <form onSubmit={handleFormLogin} style={{ display: 'flex', flexDirection: 'column', gap: '14px', textAlign: 'left' }}>
           <div>
-            <label
-              style={{
-                fontSize: "13px",
-                fontWeight: "600",
-                color: "#374151",
-                display: "block",
-                marginBottom: "6px",
-              }}
-            >
-              Username
-            </label>
-            <input
-              type="text"
+            <label style={{ fontSize: '13px', fontWeight: '600', color: '#4b5563', display: 'block', marginBottom: '6px' }}>Username</label>
+            <input 
+              type="text" 
               required
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "12px",
-                backgroundColor: "rgba(255, 255, 255, 0.6)",
-                border: "1px solid rgba(255, 255, 255, 0.8)",
-                fontSize: "14px",
-                boxSizing: "border-box",
-                outline: "none",
-                boxShadow: "inset 0 1px 2px rgba(0,0,0,0.05)",
-                transition: "all 0.3s ease",
-              }}
+              style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #d1d5db', fontSize: '14px', boxSizing: 'border-box' }}
               placeholder="Masukkan username"
             />
           </div>
 
           <div>
-            <label
-              style={{
-                fontSize: "13px",
-                fontWeight: "600",
-                color: "#374151",
-                display: "block",
-                marginBottom: "6px",
-              }}
-            >
-              Password
-            </label>
-            <input
-              type="password"
+            <label style={{ fontSize: '13px', fontWeight: '600', color: '#4b5563', display: 'block', marginBottom: '6px' }}>Password</label>
+            <input 
+              type="password" 
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "12px",
-                backgroundColor: "rgba(255, 255, 255, 0.6)",
-                border: "1px solid rgba(255, 255, 255, 0.8)",
-                fontSize: "14px",
-                boxSizing: "border-box",
-                outline: "none",
-                boxShadow: "inset 0 1px 2px rgba(0,0,0,0.05)",
-                transition: "all 0.3s ease",
-              }}
+              style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #d1d5db', fontSize: '14px', boxSizing: 'border-box' }}
               placeholder="Masukkan password"
             />
           </div>
 
-          <button
-            type="submit"
+          <button 
+            type="submit" 
             disabled={isLoading}
-            style={{
-              width: "100%",
-              backgroundColor: "#007AFF",
-              color: "#ffffff",
-              border: "none",
-              padding: "12px",
-              borderRadius: "12px",
-              fontSize: "14px",
-              fontWeight: "600",
-              cursor: "pointer",
-              marginTop: "10px",
-              transition: "background 0.2s, opacity 0.2s",
-              opacity: isLoading ? 0.7 : 1,
-              boxShadow: "0 4px 14px 0 rgba(0, 122, 255, 0.3)",
-            }}
+            style={{ width: '100%', backgroundColor: '#2563eb', color: '#ffffff', border: 'none', padding: '11px', borderRadius: '6px', fontSize: '14px', fontWeight: '600', cursor: 'pointer', marginTop: '10px', transition: 'background 0.2s' }}
           >
-            {isLoading ? "Memverifikasi..." : "Masuk ke Aplikasi"}
+            {isLoading ? 'Memverifikasi...' : 'Masuk ke Aplikasi'}
           </button>
         </form>
 
-        <div
-          style={{
-            marginTop: "30px",
-            fontSize: "11px",
-            color: "#6b7280",
-            borderTop: "1px solid rgba(255, 255, 255, 0.5)",
-            paddingTop: "15px",
-          }}
-        >
-          BASTP Admin Auth &bull; 2026
+        <div style={{ marginTop: '30px', fontSize: '11px', color: '#9ca3af', borderTop: '1px solid #f3f4f6', paddingTop: '15px' }}>
+          Migo Portal Database Auth &bull; 2026
         </div>
       </div>
     </div>
