@@ -12,8 +12,9 @@ export default function LoginPage({ onLoginSuccess }) {
     setIsLoading(true);
     setError('');
 
-    try {
-      const response = await fetch('http://localhost:5000/api/login', {
+try {
+      // GANTI http://localhost:5000 menjadi ${BASE_URL}
+      const response = await fetch(`${BASE_URL}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
