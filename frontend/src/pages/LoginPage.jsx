@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import logoIconnet from '../assets/logo-iconnet.png';
+import BASE_URL from '../utils/api';
 
 export default function LoginPage({ onLoginSuccess }) {
   const [username, setUsername] = useState('');
@@ -13,7 +14,7 @@ export default function LoginPage({ onLoginSuccess }) {
     setError('');
 
 try {
-      // GANTI http://localhost:5000 menjadi ${BASE_URL}
+      // UBAH DARI 'http://localhost:5000/api/login' MENJADI KODE DI BAWAH INI:
       const response = await fetch(`${BASE_URL}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
