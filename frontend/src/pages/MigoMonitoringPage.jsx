@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import BASE_URL from '../utils/api';
 
 export default function MigoMonitoringPage() {
   const [stats, setStats] = useState(null);
@@ -30,7 +31,7 @@ export default function MigoMonitoringPage() {
     setLoading(true);
     setError('');
     try {
-      const response = await fetch('http://localhost:5000/api/bap/monitoring-stats');
+      const response = await fetch(`${BASE_URL}/api/bap/monitoring-stats`);
       const data = await response.json();
       
       if (data.success) {

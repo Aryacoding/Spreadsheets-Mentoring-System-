@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import BASE_URL from '../utils/api';
 
 export default function MigoBapPage() {
   // 1. STATE FORM DATA UTAMA
@@ -39,11 +40,9 @@ export default function MigoBapPage() {
     e.preventDefault();
     setIsSubmitting(true); // Aktifkan Loading
     try {
-      const response = await fetch('http://localhost:5000/api/bap/simpan', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
+      const response = await fetch(`${BASE_URL}/api/pegawai`)
+        .then(res => res.json())
+        .then(data => console.log(data));
       
       const resData = await response.json();
       if (resData.success) {
@@ -71,7 +70,7 @@ export default function MigoBapPage() {
 
     setIsSearching(true); // Aktifkan Loading
     try {
-      const response = await fetch(`http://localhost:5000/api/bap/cari/${searchNoAR}`);
+      const response = await fetch(`${BASE_URL}/api/bap/cari/${searchNoAR}`);
       const resData = await response.json();
 
       if (resData.success) {
@@ -98,7 +97,7 @@ export default function MigoBapPage() {
 
     setIsUpdating(true); // Aktifkan Loading
     try {
-      const response = await fetch('http://localhost:5000/api/bap/update-bap', {
+      const response = await fetch(`${BASE_URL}/api/bap/update-bap`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
