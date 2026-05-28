@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logoIconnet from '../assets/logo-iconnet.png';
 import BASE_URL from '../utils/api';
-import backgroundImage from '../assets/Kantor.jpg';
+import backgroundImage from '../assets/kantor.jpg';
 
 export default function LoginPage({ onLoginSuccess }) {
   const [username, setUsername] = useState('');
