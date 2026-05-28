@@ -29,7 +29,7 @@ app.post('/api/login', (req, res) => {
 app.use('/api/bap', bapRoutes);
 
 app.get('/', (req, res) => {
-  res.send('Server Backend Migo BAP berjalan dengan baik di Vercel 🚀');
+  res.send('Server Backend BASTP berjalan dengan baik di Vercel 🚀');
 });
 
 // Listener hanya untuk development lokal di komputer kamu

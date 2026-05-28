@@ -13,8 +13,7 @@ export default function LoginPage({ onLoginSuccess }) {
     setIsLoading(true);
     setError('');
 
-try {
-      // UBAH DARI 'http://localhost:5000/api/login' MENJADI KODE DI BAWAH INI:
+    try {
       const response = await fetch(`${BASE_URL}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -36,43 +35,96 @@ try {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#f3f4f6', fontFamily: 'Arial, sans-serif' }}>
-      <div style={{ backgroundColor: '#ffffff', padding: '40px', borderRadius: '12px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)', width: '100%', maxWidth: '380px', textAlign: 'center', border: '1px solid #e5e7eb' }}>
+    <div style={{ 
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      height: '100vh', 
+      // Mengubah background flat menjadi gradient lembut agar efek kaca transparan terlihat nyata
+      background: 'linear-gradient(135deg, #e2e8f0 0%, #f1f5f9 100%)', 
+      fontFamily: 'Arial, sans-serif' 
+    }}>
+      {/* Kartu Login Utama (Glassmorphism) */}
+      <div style={{ 
+        backgroundColor: 'rgba(255, 255, 255, 0.45)', 
+        backdropFilter: 'blur(20px) saturate(150%)',
+        WebkitBackdropFilter: 'blur(20px) saturate(150%)', // Support Safari
+        padding: '40px', 
+        borderRadius: '20px', 
+        boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.12)', 
+        width: '100%', 
+        maxWidth: '380px', 
+        textAlign: 'center', 
+        border: '1px solid rgba(255, 255, 255, 0.6)' 
+      }}>
         
         <div style={{ marginBottom: '20px' }}>
           <img src={logoIconnet} alt="Logo ICONNET" style={{ height: '45px', objectFit: 'contain' }} />
         </div>
 
         <h3 style={{ color: '#1f2937', margin: '0 0 6px 0', fontSize: '20px', fontWeight: '700' }}>Migo Portal BAP</h3>
-        <p style={{ color: '#6b7280', fontSize: '13px', margin: '0 0 24px 0' }}>Silakan masuk menggunakan akun administrator Anda.</p>
+        <p style={{ color: '#4b5563', fontSize: '13px', margin: '0 0 24px 0' }}>Silakan masuk menggunakan akun administrator Anda.</p>
 
         {error && (
-          <div style={{ backgroundColor: '#fee2e2', color: '#dc2626', padding: '10px', borderRadius: '6px', fontSize: '13px', marginBottom: '16px', fontWeight: '600', textAlign: 'left', border: '1px solid #fca5a5' }}>
+          <div style={{ 
+            backgroundColor: 'rgba(254, 226, 226, 0.8)', 
+            color: '#dc2626', 
+            padding: '10px', 
+            borderRadius: '10px', 
+            fontSize: '13px', 
+            marginBottom: '16px', 
+            fontWeight: '600', 
+            textAlign: 'left', 
+            border: '1px solid rgba(252, 165, 165, 0.5)',
+            backdropFilter: 'blur(10px)'
+          }}>
             ⚠️ {error}
           </div>
         )}
 
         <form onSubmit={handleFormLogin} style={{ display: 'flex', flexDirection: 'column', gap: '14px', textAlign: 'left' }}>
           <div>
-            <label style={{ fontSize: '13px', fontWeight: '600', color: '#4b5563', display: 'block', marginBottom: '6px' }}>Username</label>
+            <label style={{ fontSize: '13px', fontWeight: '600', color: '#374151', display: 'block', marginBottom: '6px' }}>Username</label>
             <input 
               type="text" 
               required
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #d1d5db', fontSize: '14px', boxSizing: 'border-box' }}
+              style={{ 
+                width: '100%', 
+                padding: '10px', 
+                borderRadius: '12px', 
+                backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                border: '1px solid rgba(255, 255, 255, 0.8)', 
+                fontSize: '14px', 
+                boxSizing: 'border-box',
+                outline: 'none',
+                boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.05)',
+                transition: 'all 0.3s ease'
+              }}
               placeholder="Masukkan username"
             />
           </div>
 
           <div>
-            <label style={{ fontSize: '13px', fontWeight: '600', color: '#4b5563', display: 'block', marginBottom: '6px' }}>Password</label>
+            <label style={{ fontSize: '13px', fontWeight: '600', color: '#374151', display: 'block', marginBottom: '6px' }}>Password</label>
             <input 
               type="password" 
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #d1d5db', fontSize: '14px', boxSizing: 'border-box' }}
+              style={{ 
+                width: '100%', 
+                padding: '10px', 
+                borderRadius: '12px', 
+                backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                border: '1px solid rgba(255, 255, 255, 0.8)', 
+                fontSize: '14px', 
+                boxSizing: 'border-box',
+                outline: 'none',
+                boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.05)',
+                transition: 'all 0.3s ease'
+              }}
               placeholder="Masukkan password"
             />
           </div>
@@ -80,13 +132,33 @@ try {
           <button 
             type="submit" 
             disabled={isLoading}
-            style={{ width: '100%', backgroundColor: '#2563eb', color: '#ffffff', border: 'none', padding: '11px', borderRadius: '6px', fontSize: '14px', fontWeight: '600', cursor: 'pointer', marginTop: '10px', transition: 'background 0.2s' }}
+            style={{ 
+              width: '100%', 
+              backgroundColor: '#007AFF', // Biru iOS/macOS asli
+              color: '#ffffff', 
+              border: 'none', 
+              padding: '12px', 
+              borderRadius: '12px', 
+              fontSize: '14px', 
+              fontWeight: '600', 
+              cursor: 'pointer', 
+              marginTop: '10px', 
+              transition: 'background 0.2s, opacity 0.2s',
+              opacity: isLoading ? 0.7 : 1,
+              boxShadow: '0 4px 14px 0 rgba(0, 122, 255, 0.25)'
+            }}
           >
             {isLoading ? 'Memverifikasi...' : 'Masuk ke Aplikasi'}
           </button>
         </form>
 
-        <div style={{ marginTop: '30px', fontSize: '11px', color: '#9ca3af', borderTop: '1px solid #f3f4f6', paddingTop: '15px' }}>
+        <div style={{ 
+          marginTop: '30px', 
+          fontSize: '11px', 
+          color: '#6b7280', 
+          borderTop: '1px solid rgba(255, 255, 255, 0.4)', 
+          paddingTop: '15px' 
+        }}>
           Migo Portal Database Auth &bull; 2026
         </div>
       </div>
