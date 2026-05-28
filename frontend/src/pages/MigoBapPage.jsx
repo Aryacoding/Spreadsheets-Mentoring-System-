@@ -35,14 +35,17 @@ export default function MigoBapPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // 4. FUNGSI TAMBAH DATA BARU KE SPREADSHEET
+ // 4. FUNGSI TAMBAH DATA BARU KE SPREADSHEET (SUDAH DIPERBAIKI)
   const handleSubmitKeSheet = async (e) => {
     e.preventDefault();
     setIsSubmitting(true); // Aktifkan Loading
     try {
-      // const response = await fetch(`${BASE_URL}/api/pegawai`)
-      //   .then(res => res.json())
-      //   .then(data => console.log(data));
+      // Perbaikan: Target rute diubah ke /api/bap/simpan & mengirimkan formData
+      const response = await fetch(`${BASE_URL}/api/bap/simpan`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData) // Data form dikirim ke server backend
+      });
       
       const resData = await response.json();
       if (resData.success) {
