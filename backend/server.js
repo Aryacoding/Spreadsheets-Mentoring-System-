@@ -3,8 +3,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken'; // <--- TAMBAHKAN INI
 
-import pegawaiRoutes from './routes/pegawaiRoutes.js';
-import perangkatRoutes from './routes/perangkatRoutes.js'; 
+// import pegawaiRoutes from './routes/pegawaiRoutes.js';
+// import perangkatRoutes from './routes/perangkatRoutes.js'; 
 import bapRoutes from './routes/bapRoutes.js'; 
 
 dotenv.config();
@@ -32,8 +32,8 @@ app.post('/api/login', (req, res) => {
 // --------------------------------
 
 // ROUTER INDEPENDEN LAINNYA
-app.use('/api/pegawai', pegawaiRoutes);
-app.use('/api/perangkat', perangkatRoutes); 
+// app.use('/api/pegawai', pegawaiRoutes);
+// app.use('/api/perangkat', perangkatRoutes); 
 app.use('/api/bap', bapRoutes);
 
 // ... (sisanya biarkan sama seperti sebelumnya) ...
