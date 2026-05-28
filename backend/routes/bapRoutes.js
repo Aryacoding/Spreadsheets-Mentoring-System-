@@ -3,7 +3,7 @@ import express from 'express';
 const router = express.Router();
 
 // PASTE URL YANG ANDA SALIN DARI LANGKAH 1 DI SINI
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwmVrImJB7DEx8jxF3XFe53CQE4diJKIkFE_QvdUbEMBmtNHmq-zw3q-Pso9eOGnPm32A/exec';
+const APP_SCRIPT_URL = process.env.APP_SCRIPT_URL;
 
 // 1. ENDPOINT: OPER DATA DARI FRONTEND KE SPREADSHEET
 router.post('/simpan', async (req, res) => {
