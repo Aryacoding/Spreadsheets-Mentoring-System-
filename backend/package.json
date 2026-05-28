@@ -1,5 +1,5 @@
 {
-  "name": "migo-bap-backend",
+  "name": "backend",
   "version": "1.0.0",
   "description": "Backend API untuk CRUD Pegawai dan Auto-fill Berita Acara",
   "main": "server.js",
