@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import logoIconnet from '../assets/logo-iconnet.png';
 import BASE_URL from '../utils/api';
+import backgroundImage from '../assets/background.jpg';
 
 export default function LoginPage({ onLoginSuccess }) {
   const [username, setUsername] = useState('');
@@ -35,14 +36,18 @@ export default function LoginPage({ onLoginSuccess }) {
   };
 
   return (
-    <div style={{ 
-      display: 'flex', 
-      justifyContent: 'center', 
-      alignItems: 'center', 
-      height: '100vh', 
-      // Mengubah background flat menjadi gradient lembut agar efek kaca transparan terlihat nyata
-      background: 'linear-gradient(135deg, #e2e8f0 0%, #f1f5f9 100%)', 
-      fontFamily: 'Arial, sans-serif' 
+    <div style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      backgroundImage: `url(${backgroundImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
     }}>
       {/* Kartu Login Utama (Glassmorphism) */}
       <div style={{ 
@@ -62,7 +67,7 @@ export default function LoginPage({ onLoginSuccess }) {
           <img src={logoIconnet} alt="Logo ICONNET" style={{ height: '45px', objectFit: 'contain' }} />
         </div>
 
-        <h3 style={{ color: '#1f2937', margin: '0 0 6px 0', fontSize: '20px', fontWeight: '700' }}>Migo Portal BAP</h3>
+        <h3 style={{ color: '#1f2937', margin: '0 0 6px 0', fontSize: '20px', fontWeight: '700' }}>Portal BASTP</h3>
         <p style={{ color: '#4b5563', fontSize: '13px', margin: '0 0 24px 0' }}>Silakan masuk menggunakan akun administrator Anda.</p>
 
         {error && (
@@ -159,7 +164,7 @@ export default function LoginPage({ onLoginSuccess }) {
           borderTop: '1px solid rgba(255, 255, 255, 0.4)', 
           paddingTop: '15px' 
         }}>
-          Migo Portal Database Auth &bull; 2026
+          Portal Database Auth &bull; 2026
         </div>
       </div>
     </div>

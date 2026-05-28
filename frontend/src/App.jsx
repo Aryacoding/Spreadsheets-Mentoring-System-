@@ -40,7 +40,7 @@ export default function App() {
               </div>
               
               <Link to="/" style={navLinkStyle}>
-                <FiFileText size={17} style={{ marginRight: '5px' }} /> Generator BAP
+                <FiFileText size={17} style={{ marginRight: '5px' }} /> Cari & Tambah BASTP
               </Link>
               
               <Link to="/monitoring" style={navLinkStyle}>
