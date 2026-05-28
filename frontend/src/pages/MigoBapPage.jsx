@@ -40,9 +40,9 @@ export default function MigoBapPage() {
     e.preventDefault();
     setIsSubmitting(true); // Aktifkan Loading
     try {
-      const response = await fetch(`${BASE_URL}/api/pegawai`)
-        .then(res => res.json())
-        .then(data => console.log(data));
+      // const response = await fetch(`${BASE_URL}/api/pegawai`)
+      //   .then(res => res.json())
+      //   .then(data => console.log(data));
       
       const resData = await response.json();
       if (resData.success) {
