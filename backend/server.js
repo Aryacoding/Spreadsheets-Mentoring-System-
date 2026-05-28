@@ -19,7 +19,7 @@ app.post('/api/login', (req, res) => {
   
   // Mengambil user & pass dari .env (atau nilai default jika di lokal belum di-set)
   const validUser = process.env.ADMIN_USER || 'admin';
-  const validPass = process.env.ADMIN_PASS || 'rahasia123';
+  const validPass = process.env.ADMIN_PASS || 'admin123';
 
   if (username === validUser && password === validPass) {
     // Buat token (opsional untuk keamanan tambahan nanti)
