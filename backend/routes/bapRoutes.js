@@ -2,8 +2,8 @@ import express from 'express';
 
 const router = express.Router();
 
-// PASTE URL YANG ANDA SALIN DARI LANGKAH 1 DI SINI
-const APP_SCRIPT_URL = process.env.APP_SCRIPT_URL;
+// PERBAIKAN DI BARIS INI: Tambahkan huruf S pada nama variabelnya
+const APPS_SCRIPT_URL = process.env.APP_SCRIPT_URL; 
 
 // 1. ENDPOINT: OPER DATA DARI FRONTEND KE SPREADSHEET
 router.post('/simpan', async (req, res) => {
@@ -42,7 +42,7 @@ router.post('/update-bap', async (req, res) => {
   try {
     const { rowNumber, status, urlDrive } = req.body;
 
-    // Kirim data ke Google Apps Script dengan flag action: "update"
+    // Kirim data ke Google Apps Script dengan flag action: \"update\"
     const response = await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
