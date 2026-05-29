@@ -1,4 +1,4 @@
 
-const BASE_URL = "https://bastp-backend-api.vercel.app"; 
+const BASE_URL = "https://backendproject-silk.vercel.app"; 
 
 export default BASE_URL;
